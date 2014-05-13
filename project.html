@@ -1,0 +1,125 @@
+<HTML>
+
+<HEAD> 
+<TITLE> Prajwal Mohanmurthy: Ising Model</TITLE>
+
+</HEAD>
+
+
+<! HTML body below
+<BODY>
+
+<H1><u> Project: Ising Model</u></H1>
+<H2>Prajwal Mohanmurthy</H2>
+
+<hr>
+<hr>
+
+<H2><u>Brief Introduction</u></H2>
+<p> Ising model was developed by Ising in 1924 as a part of his doctoral thesis. Of course 1D was worked out first before
+Lars Onsager solved the 2D Ising model analytically in 1944. While the 1D Ising model has no phase transitions, 2D has one
+phase transition and it is interesting to study the properties such as heat capacity and magnetization of the lattice at
+ the critical temperature (<i>T<sub>c</sub></i>). In this project, heat capacity and magnetization of <i>3</i> different
+lattice geometries were studied. All the latices presented here have homomorphic lattice points, i.e. all the lattice 
+points are equivivalent, therefore continuous boundaries were used (the lattice resembles a surface on a sphere).
+</p>
+
+<p>
+Square lattice: <img src = pic_a.png> Triangular Lattice: <img src = pic_c.png> Moore Lattice: <img src = pic_b.png>
+</p>
+
+<p>
+Also, effects of block spin tranformation and correlation functions in a square lattice are presented here.
+
+<H2><u>Method</u></H2>
+In an Ising model the Metropolis algorithm may be used. A random lattice point is picked and if changing its spin reduces the total energy of the lattice, then
+the spin is slipped or if flipping the spin increases the energy of the lattice, then we may still flip the spin but with a
+probability given by the Maxwell Boltzmann distribution (<i>e<sup>-<sup>E</sup>/<sub>kT</sub></sup></i>) where <i>E</i> is
+the difference in lattice energy if the spin was flipped and <i>T</i> is the temperature of the system. This work inolves 
+only 2 spin systems in which the spins can only be +1/-1 (up/down). Here, we have used (<i>n X n : 20 X 20</i>) lattices with about
+<i>n<sup>6</sup></i> spin flip trials for each temperature that the code was run for. For correlation function and effects 
+of block spin transformation, a larger lattice with sizes of about <i>100 X 100</i> and <i>90 X 90</i> were used,
+ respectively.    
+</p> 
+
+<H4>List of programs written</H4>
+<p><ul>
+<li><a href = ising2d.f95>ising2d.f95</a>: Magnetization and Heat Capacity of Sqaure Lattice
+<li><a href = ising3.f95>ising3.f95</a>: Magnetization and Heat Capacity of Triangular Lattice
+<li><a href = ising4.f95>ising4.f95</a>: Magnetization and Heat Capacity of Moore Lattice
+<li><a href = ising2dcor.f95>ising2dcor.f95</a>: Correlation function in Sqaure Lattice
+<li><a href = ising2dblock.f95>ising2dblock.f95</a>: Block spin tranformation in Sqaure Lattice
+</ul></p>
+
+<hr>
+
+<H2><u>Results and Discussion</u></H2>
+<p><ul>
+<li><H5>Heat Capacity</H5>
+To calculate the heat capacity, total energy for the lattice was calculated and the standard therodynamic definition of 
+<i>C<sub>v</sub></i> was used to compute the value of the head capacity.
+<img src = eq1.png>
+<ul>
+<li>Square Lattice: <img src = plot1.png>
+<li>Trangular Lattice: <img src = plot2.png>
+<li>Moore Lattice: <img src = plot3.png>
+</ul>
+
+The graphs above indicate a phase transition for each lattice at a specific temperature where the value of heat capacity 
+diverges.
+
+<ul>
+<li>Square Lattice: <i>T<sub>c</sub> = 2.2K</i>
+<li>Trangular Lattice: <i>T<sub>c</sub> = 3.9K</i>
+<li>Moore Lattice: <i>T<sub>c</sub> = 5.5K</i>
+</ul>
+
+<li><H5>Magnetizaton</H5>
+Magetization was easily computed by adding together all the spins of thelattice points for every temperature.
+As seen below, the magnetization is almost 100% below the critical point and then drops off and becomes completely random
+beyond the critical temperature. This ratifies the existence of a critical phenomena at those temperatures. 
+<ul>
+<li>Square Lattice: <img src = plot4.png>
+<li>Trangular Lattice: <img src = plot5.png>
+<li>Moore Lattice: <img src = plot6.png>
+</ul>
+
+<li><H5>Correlation Function</H5>
+Plots of correlation function indicate how far some particular structure streaches on the lattice. The idea of 'structure'
+becomes evident with the following illustration. Below are <i>2</i> cases, one in which the <i>T<sub>c</sub> = .1K</i> 
+followed by <i>T<sub>c</sub> = 10K</i>. We of course start off with a randomized lattice.</p>
+
+<pre> <i>T<sub>c</sub> = 10K</i>
+Initial: <img src = plot10.png>, Final: <img src = plot10b.png>
+<i>T<sub>c</sub> = .10K</i>
+Initial: <img src = plot9.png>, Final: <img src = plot9b.png>
+</pre>
+
+<p>    
+In the high temperature case, the spins are all random but in the low temperature case we see clustering of similar spins 
+(which is the structure here). Correlation function given by, <img src = eq2.png>, can be used to calculate the 
+correlation length (the distance over which the correlation fucntion falls off by a factor of <b>e</b>). Sub- 
+critical lattices will have very high correlation length, i.e. the correlation function will remain almost constant, but
+in a lattice which is over the critical temperature, the correlation length is much smaller, i.e. the value of correlation 
+function falls off, with distance, very soon owing to the randomness of the system. The plot below shows the correlation
+function plotted against distance for temperatures spanning [<i>1,2,3,...,10</i>]K (1K is the topmost line and 10K the 
+lowest one).</p><p>
+<img src = plot8.png>
+
+<li><H5>Block Spin Tranformation (through magnetization)</H5>
+<img src = Picture1.png>
+</p>
+<p>
+To show that scale doesn't affect this system, one can apply the block spin transformation which is also a powerful 
+technique to investigate system near critical temperature. Below is a plot of magnetization for (<i>90 X 90</i>) and 
+for a lattice on which a block spin transformation was applied effectively making it the size of (<i>30 X 30</i>). As shall be
+seen, only the scales have changed. The location of the critical phenomena does not change. The elbow in magnetization curve
+still occurs at the critical temperature.</p><p>
+<img src = plot7.png> </p><p>
+A movie of the simulation can be seen in the mathematica file <a href = ising.nb>ising.nb</a>. Here a square 
+(<i>50 X 50</i>) lattice is used and the temperature can be set to an appropriate value. 
+</ul></p> 
+
+
+</BODY>
+</HTML>
